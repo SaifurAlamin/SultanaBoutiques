@@ -45,9 +45,9 @@ export default function Footer() {
                     <Link className="sm:text-xs text-sm " to="/privacy-policy">
                       Privacy Policy
                     </Link>
-                    <Link className="sm:text-xs text-sm " to="/privacy-policy">
+                    {/* <Link className="sm:text-xs text-sm " to="/privacy-policy">
                       Terms & Conditions
-                    </Link>
+                    </Link> */}
                   </ul>
                 </div>
               </div>
@@ -61,12 +61,12 @@ export default function Footer() {
                 </div>
                 <div>
                   <ul className="flex flex-col space-y-4 text-qgray">
-                    <Link
+                    {/* <Link
                       className="sm:text-xs text-sm "
                       to="/all-products/null/null/is_featured"
                     >
                       We Sale Trending Products
-                    </Link>
+                    </Link> */}
                     <Link className=" sm:text-xs text-sm" to="/size-guide">
                       Size Guide
                     </Link>
@@ -88,24 +88,24 @@ export default function Footer() {
                 <ul className="flex flex-col space-y-4 items-center lg:items-start justify-center lg:justify-start f">
                   <li>
                     <div className="flex space-x-5 items-center">
-                      <Link
+                      <a
                         target="blank"
-                        to="https://www.facebook.com/sultanaboutique12"
+                        href="https://www.facebook.com/sultanaboutique12"
                       >
                         <img className="w-8" src={fb} alt="" />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         target="blank"
-                        to=" https://www.youtube.com/@SultanaBoutique"
+                        href=" https://www.youtube.com/@SultanaBoutique"
                       >
                         <img className="w-8" src={yt} alt="" />
-                      </Link>
-                      <Link
+                      </a>
+                      <a
                         target="blank"
-                        to="https://www.instagram.com/sultanaboutique6005/"
+                        href="https://www.instagram.com/sultanaboutique6005/"
                       >
                         <img className="w-8" src={instra} alt="" />
-                      </Link>
+                      </a>
                     </div>
                   </li>
                 </ul>
@@ -116,28 +116,28 @@ export default function Footer() {
             <div className="fixed bottom-0 left-0 ml-4 mb-4">
               <ul className="flex flex-col space-y-4 items-center">
                 <li>
-                  <Link
+                  <a
                     target="_blank"
-                    to="https://www.facebook.com/sultanaboutique12"
+                    href="https://www.facebook.com/sultanaboutique12"
                   >
                     <img className="w-8" src={fb} alt="" />
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     target="_blank"
-                    to="https://www.youtube.com/@SultanaBoutique"
+                    href="https://www.youtube.com/@SultanaBoutique"
                   >
                     <img className="w-8" src={yt} alt="" />
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link
+                  <a
                     target="_blank"
-                    to="https://www.instagram.com/sultanaboutique6005/"
+                    href="https://www.instagram.com/sultanaboutique6005/"
                   >
                     <img className="w-8" src={instra} alt="" />
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>

@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import { useGetCompanyInfoQuery } from "../../../../features/api/companyinfoApi";
 
 export default function TopBar({ className }) {
-  const [headingData, setHeaderData] = useState({});
+  // const [headingData, setHeaderData] = useState({});
+  const { data: headingData } = useGetCompanyInfoQuery();
   const topbar_text1 = headingData?.top_bar_txt1;
   const topbar_text2 = headingData?.top_bar_txt2;
   const topbar_text3 = headingData?.top_bar_txt3;
+  console.log(topbar_text1);
 
   //top bar random data
-  useEffect(() => {
-    fetch("https://www.sultanaboutiques.com/backend/api/product/company/info")
-      .then((res) => res.json())
-      .then((data) => {
-        setHeaderData(data);
-      });
-  }, []);
-  const arr = ["amar", "shsakjhlacldhaljkdchahdf", "3rdldjfkld"];
+  // useEffect(() => {
+  //   fetch("https://www.sultanaboutiques.com/backend/api/product/company/info")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setHeaderData(data);
+  //     });
+  // }, []);
 
   const htmlStrings = [topbar_text1, topbar_text2, topbar_text3];
   const textArray = htmlStrings.map((htmlString, index) => {

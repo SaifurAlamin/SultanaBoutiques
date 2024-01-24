@@ -70,6 +70,11 @@ export default function Navbar({ className }) {
     localStorage.removeItem("access_token");
     navigate("/");
   };
+
+  const [selectId, setSelectId] = useState(null);
+  const handleShow = (id) => {
+    setSelectId(id);
+  };
   return (
     <div
       className={`nav-widget-wrapper w-full bg-white text-dark h-[60px] relative z-30  ${
@@ -144,11 +149,11 @@ export default function Navbar({ className }) {
                   ))}
 
                   <li className="relative">
-                    <span className="flex items-center text-md text-dark font-600 cursor-pointer ">
+                    <span className="flex items-center text-md text-dark font-600 cursor-pointer">
                       <span className="text-gray-500 border-b border-transparent hover:border-gray-900 hover:text-gray-800">
                         Others
                       </span>
-                      <span className="ml-1 text-gray-500 border-b border-transparent hover:border-gray-900 hover:text-gray-800 ">
+                      <span className="ml-1 text-gray-500 border-b border-transparent hover:border-gray-900 hover:text-gray-800">
                         <Arrow className="fill-current" />
                       </span>
                     </span>
@@ -163,13 +168,38 @@ export default function Navbar({ className }) {
                           <div>
                             <div className="category-items">
                               <ul className="flex flex-col space-y-2">
-                                {category?.slice(4, 10)?.map((item) => (
+                                {category?.slice(4, 10)?.map((item, i) => (
                                   <li key={item?.id}>
-                                    <Link to={`/all-products/${item?.id}`}>
-                                      <span className="text-gray-500 text-sm font-400  border-b border-transparent hover:border-gray-900 hover:text-gray-900">
+                                    <span
+                                      className="flex items-center text-md text-dark font-600 cursor-pointer"
+                                      onClick={() => handleShow(item?.id)}
+                                    >
+                                      <span className="text-gray-500 text-sm border-b border-transparent hover:border-gray-900 hover:text-gray-800">
                                         {item?.name}
                                       </span>
-                                    </Link>
+                                      <span className="ml-1 text-gray-500 border-b border-transparent hover:border-gray-900 hover:text-gray-800">
+                                        <Arrow className="fill-current" />
+                                      </span>
+                                    </span>
+                                    {/* Submenu for each item */}
+
+                                    {selectId === item.id && (
+                                      <ul className="submenu">
+                                        {item?.subcategory?.map((subItem) => (
+                                          <li key={subItem.id}>
+                                            <Link
+                                              to={`/all-products/${item?.id}/${subItem?.id}`}
+                                            >
+                                              <span className="text-gray-500 text-xs font-400  border-b border-transparent hover:border-gray-900 hover:text-gray-900">
+                                                {subItem?.name}
+                                              </span>
+                                            </Link>
+                                          </li>
+                                        ))}
+
+                                        {/* Add more submenu items here */}
+                                      </ul>
+                                    )}
                                   </li>
                                 ))}
                               </ul>
@@ -179,6 +209,7 @@ export default function Navbar({ className }) {
                       </div>
                     </div>
                   </li>
+
                   <li className="relative">
                     <span className="flex items-center text-md text-dark font-600 cursor-pointer ">
                       <span className="text-gray-500 border-b border-transparent hover:border-gray-900 hover:text-gray-800">

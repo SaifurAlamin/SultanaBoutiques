@@ -23,12 +23,22 @@ export default function ProductsFilter({
   max,
   rep,
   setStorage,
+  action,
+  X,
+  L,
+  M,
+  XL,
+  S,
+  special,
+  setBrandId,
+  brandId,
 }) {
   const { categoryId } = useParams();
   const [open, setOpen] = useState(0);
   const [color, setColor] = useState([]);
-  console.log(color);
+
   const [brand, setBrand] = useState([]);
+  console.log(brand);
 
   const [spinner, setSpinner] = useState(false);
 
@@ -75,12 +85,15 @@ export default function ProductsFilter({
 
   useEffect(() => {
     filterstorage("null");
+    setBrandId("null");
     setSpinner(true);
     const url = `https://www.sultanaboutiques.com/backend/api/home/multisearchproduct/${
       mainId || "null"
-    }/${
-      subCatId || "null"
-    }/null/${min}/${max}/null/null/null/null/null/${startPage}/${count}`;
+    }/${subCatId || "null"}/${
+      S || M || L || XL || "null"
+    }/${min}/${max}/null/null/${brandId || "null"}/null/${
+      special || "null"
+    }/${startPage}/${count}`;
     console.log(url);
     fetch(url)
       .then((res) => res.json())
@@ -88,12 +101,24 @@ export default function ProductsFilter({
         setColor(data?.products);
         setSpinner(false); // Hide loading screen
       });
-  }, [mainId, subCatId, min, max, count, startPage]);
+  }, [
+    mainId,
+    subCatId,
+    min,
+    max,
+    count,
+    startPage,
+    XL,
+    S,
+    M,
+    L,
+    special,
+    brandId,
+  ]);
   const findColor = color?.map((item) => item?.color);
 
   const searchColor = findColor?.flatMap((item) => item.split(","));
   const finalColor = [...new Set(searchColor)];
-  console.log(finalColor);
 
   // kkno single product dekano lagle ayta diye dekabu  **@Mayin dont't delete it
   const singleCatagory = habib?.find((c) => c.id == categoryId);
@@ -392,10 +417,13 @@ export default function ProductsFilter({
             />
           </div>
           <p className="text-xs text-qblack font-400">
-            Price: €{volume.min} - €{volume.max}
+            Pricee: €{volume.min} - €{volume.max}
           </p>
         </div>
-        <div className="filter-subject-item pb-10 border-b border-qgray-border mt-6">
+        <div
+          className="filter-subject-item pb-10 border-b border-qgray-border mt-6"
+          onClick={filterToggleHandler}
+        >
           <div className="subject-title mb-[30px]">
             <h1 className="text-black text-base font-500">Brands</h1>
           </div>
@@ -435,7 +463,10 @@ export default function ProductsFilter({
             <h1 className="text-black text-base font-500">Color</h1>
           </div>
           <div className="filter-items">
-            <div className="flex space-x-[10px] justify-center items-center flex-wrap">
+            <div
+              className="flex space-x-[10px] justify-center items-center flex-wrap"
+              onClick={filterToggleHandler}
+            >
               {finalColor?.map((c, i) => (
                 <span
                   key={i}
@@ -456,7 +487,10 @@ export default function ProductsFilter({
             </div>
           </div>
         </div>
-        <div className="filter-subject-item pb-10 mt-6">
+        <div
+          className="filter-subject-item pb-10 mt-6"
+          onClick={filterToggleHandler}
+        >
           <div className="subject-title mb-[30px]">
             <h1 className="text-black text-base font-500">Sizes</h1>
           </div>

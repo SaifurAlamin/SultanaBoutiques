@@ -363,9 +363,9 @@ export default function Drawer({ className, open, action }) {
                     <Link to="/privacy-policy">
                       <Dropdown.Item>Privacy Policy Us</Dropdown.Item>
                     </Link>
-                    <Link to="/privacy-policy">
+                    {/* <Link to="/privacy-policy">
                       <Dropdown.Item>Terms and Condition</Dropdown.Item>
-                    </Link>
+                    </Link> */}
                     <Link to="/refundpolicy">
                       <Dropdown.Item>Refund Policy</Dropdown.Item>
                     </Link>

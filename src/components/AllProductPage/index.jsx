@@ -129,7 +129,7 @@ export default function AllProductPage() {
   // ]);
 
   const [count, setCount] = useState(20);
-  console.log(count);
+
   const {
     data: filterProducts,
     isLoading,
@@ -283,6 +283,14 @@ export default function AllProductPage() {
                   max={max}
                   rep={rep}
                   setStorage={setStorage}
+                  S={S}
+                  L={L}
+                  M={M}
+                  XL={XL}
+                  special={special}
+                  setBrandId={setBrandId}
+                  brandId={brandId}
+                  findInputFieldData
                 />
                 {/* ads */}
                 <div className="w-full hidden lg:block h-[295px]">
