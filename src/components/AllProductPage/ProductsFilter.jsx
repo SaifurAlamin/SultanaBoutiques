@@ -32,13 +32,15 @@ export default function ProductsFilter({
   special,
   setBrandId,
   brandId,
+  filterProducts,
+  currentPage,
 }) {
   const { categoryId } = useParams();
   const [open, setOpen] = useState(0);
   const [color, setColor] = useState([]);
 
   const [brand, setBrand] = useState([]);
-  console.log(brand);
+  console.log(filterProducts);
 
   const [spinner, setSpinner] = useState(false);
 
@@ -93,7 +95,7 @@ export default function ProductsFilter({
       S || M || L || XL || "null"
     }/${min}/${max}/null/null/${brandId || "null"}/null/${
       special || "null"
-    }/${startPage}/${count}`;
+    }/${currentPage}/${count}`;
     console.log(url);
     fetch(url)
       .then((res) => res.json())
@@ -107,7 +109,7 @@ export default function ProductsFilter({
     min,
     max,
     count,
-    startPage,
+    currentPage,
     XL,
     S,
     M,
@@ -119,6 +121,8 @@ export default function ProductsFilter({
 
   const searchColor = findColor?.flatMap((item) => item.split(","));
   const finalColor = [...new Set(searchColor)];
+
+  //  =================Size part ================
 
   // kkno single product dekano lagle ayta diye dekabu  **@Mayin dont't delete it
   const singleCatagory = habib?.find((c) => c.id == categoryId);

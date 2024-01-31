@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "react-input-range/lib/css/index.css";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import productDatas from "../../data/products.json";
 import { useGetFilterProductsQuery } from "../../features/api/filterproductsApi";
 import BreadcrumbCom from "../BreadcrumbCom";
@@ -79,7 +79,7 @@ export default function AllProductPage() {
   };
 
   const rep = storage.replace(/#/g, ""); //ayta hoilo color code er aghe j hash(#) ashe ota baad deyar jnno
-
+  console.log(rep);
   const [filterToggle, setToggle] = useState(false);
   const [spinner, setSpinner] = useState(true);
 
@@ -97,7 +97,6 @@ export default function AllProductPage() {
   const [currentPage, setCurrentPage] = useState(1);
   // const [count, setCount] = useState(20);
   const [startPage, setStartPage] = useState(1);
-  console.log(startPage);
 
   //Final Filter
   // useEffect(() => {
@@ -152,7 +151,7 @@ export default function AllProductPage() {
     count,
   });
 
-  console.log(filterProducts?.pagination);
+  console.log(filterProducts);
   // useEffect(() => {
   //   if (!isLoading && !isError && filterProducts && filterProducts.products) {
   //     setCount(filterProducts.products.length);
@@ -216,11 +215,11 @@ export default function AllProductPage() {
                 : "shadow w-8 h-6 rounded "
             } `}
             onClick={() =>
-              handlePageChange(
-                Math.min(filterProducts?.pagination?.last_page, currentPage + 1)
-              )
+              handlePageChange(filterProducts?.pagination?.last_page)
             }
-          >{`${filterProducts?.pagination?.last_page}`}</button>
+          >
+            {`${filterProducts?.pagination?.last_page}`}
+          </button>
         </span>
       );
     }
@@ -251,17 +250,13 @@ export default function AllProductPage() {
       <Layout>
         <div className="products-page-wrapper w-full">
           <div className="container-x mx-auto">
-            <div className="flex justify-between">
-              <BreadcrumbCom
-                paths={[
-                  { name: "home", path: "/" },
-                  { name: "All Products", path: "/all-products" },
-                ]}
-              />
-              <Link to="/all-products">
-                <button className="text-rose-600">Refresh</button>
-              </Link>
-            </div>
+            <BreadcrumbCom
+              paths={[
+                { name: "home", path: "/" },
+                { name: "All Products", path: "/all-products" },
+              ]}
+            />
+
             <div className="w-full lg:flex lg:space-x-[30px]">
               <div className="lg:w-[270px]">
                 <ProductsFilter
@@ -290,7 +285,10 @@ export default function AllProductPage() {
                   special={special}
                   setBrandId={setBrandId}
                   brandId={brandId}
-                  findInputFieldData
+                  // findInputFieldData
+                  filterProducts={filterProducts?.products}
+                  currentPage={currentPage}
+                  rep={rep}
                 />
                 {/* ads */}
                 <div className="w-full hidden lg:block h-[295px]">

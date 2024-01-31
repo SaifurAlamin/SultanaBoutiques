@@ -9,12 +9,12 @@ export default function BannerThree({ topbanner }) {
             {topbanner.map(function (banner) {
               if (banner?.section === "S3") {
                 return (
-                  <div className="">
+                  <div className="" key={banner?.id}>
                     <div
                       data-aos="fade-right"
                       className="xl:w-full w-full h-[300px]"
                     >
-                      <Link to="/">
+                      <Link to={`${banner?.list_url}`}>
                         <picture>
                           <source
                             media=""

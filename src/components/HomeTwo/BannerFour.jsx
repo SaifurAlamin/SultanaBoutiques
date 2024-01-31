@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function BannerFour({ topbanner }) {
   // console.log(topbanner);
 
@@ -9,12 +11,12 @@ export default function BannerFour({ topbanner }) {
             {topbanner.map(function (banner) {
               if (banner?.section === "S4") {
                 return (
-                  <div className="">
+                  <div className="" key={banner?.id}>
                     <div
                       data-aos="fade-right"
                       className="xl:w-full w-full h-[350px]"
                     >
-                      <a href="#">
+                      <Link to={`${banner?.list_url}`}>
                         <picture>
                           <source
                             media=""
@@ -26,7 +28,7 @@ export default function BannerFour({ topbanner }) {
                             className="w-full rounded max-w-full h-[350px]"
                           />
                         </picture>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 );

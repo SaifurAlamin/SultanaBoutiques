@@ -15,6 +15,7 @@ export const apiSlice = createApi({
     "home/popular/product/get",
     "home/productDetails",
     "product/company/info",
+    "sliderList",
   ],
   endpoints: (builder) => ({}),
 });

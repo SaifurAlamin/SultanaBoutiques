@@ -17,14 +17,14 @@ export default function TopBar({ className }) {
   //       setHeaderData(data);
   //     });
   // }, []);
-
+  // let textArray = ["SultanaBoutiques"];
   const htmlStrings = [topbar_text1, topbar_text2, topbar_text3];
   const textArray = htmlStrings.map((htmlString, index) => {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = htmlString;
     return tempDiv.textContent.trim();
   });
-
+  console.log(textArray);
   // // Create a temporary div element to parse the HTML
   // const tempDiv = document.createElement("div");
   // tempDiv.innerHTML = htmlString;
@@ -57,7 +57,7 @@ export default function TopBar({ className }) {
               >
                 {/* Style will be inherited from the parent element */}
                 <Typewriter
-                  words={textArray}
+                  words={textArray.length < 1 ? [] : textArray}
                   loop={Infinity}
                   cursor
                   cursorStyle=""

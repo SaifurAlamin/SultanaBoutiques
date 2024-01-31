@@ -88,7 +88,7 @@ export default function ProfileTab() {
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   label="First Name*"
-                  placeholder="Demo Name"
+                  placeholder="Your Name"
                   type="text"
                   inputClasses="h-[50px]"
                   defaultValue={
@@ -104,7 +104,7 @@ export default function ProfileTab() {
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   readOnly
                   label="Email*"
-                  placeholder="demoemial@gmail.com"
+                  placeholder="Your Mail"
                   type="email"
                   inputClasses="h-[50px]"
                   defaultValue={
